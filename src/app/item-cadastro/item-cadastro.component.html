@@ -1,0 +1,68 @@
+<form #frm="ngForm" (ngSubmit)="adicionar(frm)">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Gestão Ambiental</h1>
+      <br/>
+      <div class="minhacs">
+        <h4>Prezado funcionário entre na campanha pensamento verde a cada atitude ecológica some
+          pontos para premiações viagens cursos etc.</h4>
+          <h3>Boas práticas na empresa</h3>
+          <tr> Utilize os recursos naturais de forma racional, evitando desperdício e reutilizando matéria-prima;
+          </tr>
+          <tr> Diminuem o consumo de água e energia;</tr>
+          <tr> Elaborar produtos e reavaliam processos que tenham impacto ambiental reduzido, como menor emissão de gases
+          </tr>
+      </div>
+      <br/>
+    </div>
+    <div class="ui-g-4 ui-sm-12 ui-fluid">
+      <label>Registro: </label>
+      <p-inputMask name="registro" mask="aa9999"
+      ngModel  placeholder="AA123" [required]="true"></p-inputMask>
+    </div>
+    <div class="ui-g-4  ui-sm-12 ui-fluid">
+      <label>Nome: </label>
+      <input name="nome" placeholder="Informe seu nome..." pInputText ngModel/>
+    </div>
+    <div class="ui-g-4  ui-sm-12 ui-fluid">
+      <label>Data: </label>
+      <p-calendar name="dataAquisicao" dateFormat="dd/mm/yy" ngModel  [required]="true"></p-calendar>
+    </div>
+    <div class="ui-g-4  ui-sm-12 ui-fluid">
+      <label>Tipo de Papel: </label>
+      <input name="tipoPapel" placeholder="papel ultilizado na impressão..." pInputText ngModel  [required]="true"/>
+    </div>
+    <div class="ui-g-4  ui-sm-12 ui-fluid">
+      <label>Utencílio: </label>
+      <input name="tipoUtencilios" type="text" placeholder="teste" pInputText ngModel  [required]="true"/>
+    </div>
+    <div class="ui-g-4  ui-sm-12 ui-fluid">
+      <label>Nota do perfil: </label>
+      <p-inputMask name="notaPerfil" mask="99" placeholder="informe a nota 5 ou 10" ngModel  [required]="true"></p-inputMask>
+    </div>
+    <div class="ui-g-12 ui-fluid">
+      <label>Obs: </label>
+      <textarea pInputTextarea></textarea>
+    </div>
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Adicionar"
+      [disabled]="frm.invalid"></button>
+    </div>
+  </div>
+</form>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-dataTable [value]="itens" responsive="true">
+      <p-column field="registro" header="Registro"></p-column>
+      <p-column field="nome" header="Nome"></p-column>
+      <p-column field="tipoPapel" header="Tipo de Papel"></p-column>
+      <p-column field="tipoUtencilios" header="Utencílio"></p-column>
+      <p-column field="notaPerfil" header="Nota do Perfil"></p-column>
+      <p-column field="dataAquisicao" header="Data">
+        <ng-template pTemplate="body" let-item="rowData">
+          {{ item.dataAquisicao | date: 'dd/MM/yyyy' }}
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>
